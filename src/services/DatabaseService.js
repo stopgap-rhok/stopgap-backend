@@ -1,5 +1,6 @@
 const RampRequest = require("../models/RampRequest");
 const {Firestore} = require('@google-cloud/firestore');
+const uuidv4 = require('uuid/v4');
 
 class DatabaseService {
     constructor() {
@@ -7,6 +8,8 @@ class DatabaseService {
     }
 
     async create(data) {
+        data.requestId = uuidv4();
+
         const document = this.firestore.doc('reports/'+data.requestId);
         await document.set(data);
     }

@@ -16,11 +16,6 @@ class FileStorageService {
         ];
     }
 
-    getFile(id) {
-        console.log("File Retrieved");
-        return this.fileData[id];
-    }
-
     uploadFile(file) {
         console.log("File Uploaded");
         file.fileId = 3;

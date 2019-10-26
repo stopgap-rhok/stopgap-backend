@@ -1,6 +1,6 @@
-const RampRequest = require("..//models/RampRequest");
+const RampRequest = require("../models/RampRequest");
 
-class DatabaseUtil {
+class DatabaseService {
     constructor() {
         this.dbData = [
             new RampRequest({
@@ -35,5 +35,5 @@ class DatabaseUtil {
     }
 }
 
-// module.exports.DatabaseUtil = DatabaseUtil;
-export class DatabaseUtil;
+// module.exports.DatabaseService = DatabaseService;
+export class DatabaseService;

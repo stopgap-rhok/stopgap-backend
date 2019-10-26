@@ -1,10 +1,16 @@
 const RampRequest = require("../models/RampRequest");
 const {Firestore} = require('@google-cloud/firestore');
+var admin = require("firebase-admin");
 const uuidv4 = require('uuid/v4');
+
+admin.initializeApp({
+    credential: admin.credential.applicationDefault()
+});
 
 class DatabaseService {
     constructor() {
         this.firestore = new Firestore();
+        this.adminDb = admin.firestore();
     }
 
     async create(data) {
@@ -16,13 +22,20 @@ class DatabaseService {
         return id;
     }
     async getAll() {
-        const document = this.firestore.doc('reports/');
-        let doc = await document.get();
-        return doc;
+        const document = this.adminDb.doc('reports');
+        let allDoc = await document.get()
+        .then(snapshot=>{
+            const results = [];
+            snapshot.forEach(doc => {
+                results.push(doc.data());
+            });
+            return results;
+        });
+        return allDoc;
     }
 
     async getAllPaginated(skip, take) {
-        const document = this.firestore.doc('reports/');
+        const document = this.firestore.doc('reports');
         return [];
     }
 

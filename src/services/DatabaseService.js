@@ -8,10 +8,12 @@ class DatabaseService {
     }
 
     async create(data) {
-        data.requestId = uuidv4();
+        const id = uuidv4();
+        data.requestId = id;
 
         const document = this.firestore.doc('reports/'+data.requestId);
         await document.set(data);
+        return id;
     }
     async getAll() {
         const document = this.firestore.doc('reports/');

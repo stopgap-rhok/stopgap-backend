@@ -60,10 +60,13 @@ app.use(uploadHandler.single('image'), async function (req, res, next) {
   });
 
   // Upload the Request Data
-  await database.create(rampRequest);
+  const rampRequestId = await database.create(rampRequest);
 
   // Return our Response
-  res.status(200).send('Uploaded Successfully');
+  const jsonReturn = {
+    requestId: rampRequestId,
+  };
+  response.status(200).send(JSON.stringify(jsonReturn));
 });
 
 exports.uploadRampRequest = app;

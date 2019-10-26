@@ -51,4 +51,4 @@ class DatabaseService {
     }
 }
 
-module.exports.DatabaseService = DatabaseService;
+module.exports = DatabaseService;

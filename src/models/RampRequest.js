@@ -1,10 +1,12 @@
 class RampRequest {
-    constructor({businessName, address, isBusinessOwner, businessContact, requestorEmail}) {
+    constructor({requestId, businessName, address, isBusinessOwner, businessContact, requestorEmail, fileId}) {
+        this.requestId = requestId;
         this.businessName = businessName;
         this.address = address;
         this.isBusinessOwner = isBusinessOwner;
         this.businessContact = businessContact;
         this.requestorEmail = requestorEmail;
+        this.fileId = fileId;
     }
 }
 

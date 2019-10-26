@@ -10,7 +10,7 @@ admin.initializeApp({
 class DatabaseService {
     constructor() {
         this.firestore = new Firestore();
-        this.adminDb = admin.firestore();
+        
     }
 
     async create(data) {
@@ -22,7 +22,7 @@ class DatabaseService {
         return id;
     }
     async getAll() {
-        const document = this.adminDb.doc('reports');
+        const document = adminDb.firestore().collection('reports');
         let allDoc = await document.get()
         .then(snapshot=>{
             const results = [];

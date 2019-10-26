@@ -8,6 +8,14 @@ module.exports.http = (request, response) => {
     const database = new DatabaseService();
     const files = new FileStorageService();
     
+    // Get the Request and File
     const data = database.getByRequestId(0);
-    response.status(200).send(JSON.stringify(data));
+    const file = files.getFile(data.fileId);
+
+    // Return our JSON Response
+    const jsonReturn = {
+        request: data,
+        file: file,
+    };
+    response.status(200).send(JSON.stringify(jsonReturn));
 };

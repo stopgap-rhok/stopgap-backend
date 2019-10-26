@@ -9,7 +9,6 @@ class DatabaseService {
                 address: "123 Example Street",
                 isBusinessOwner: false,
                 businessContact: "",
-                requestorEmail: "person@gmail.com",
                 fileId: 0,
             }),
             new RampRequest({
@@ -18,8 +17,7 @@ class DatabaseService {
                 address: "Cabana Way",
                 isBusinessOwner: true,
                 businessContact: "example@business.com",
-                requestorEmail: "example@business.com",
-                fileId: 0,
+                fileId: 1,
             }),
             new RampRequest({
                 requestId: 2,
@@ -27,8 +25,7 @@ class DatabaseService {
                 address: "343 Mombassa St",
                 isBusinessOwner: true,
                 businessContact: "613-552-1234",
-                requestorEmail: "example@business.com",
-                fileId: 0,
+                fileId: 2,
             })
         ];
     }

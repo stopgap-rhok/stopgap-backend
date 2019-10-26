@@ -7,7 +7,18 @@ const FileStorageService = require("./services/FileStorageService");
 module.exports.http = (request, response) => {
     const database = new DatabaseService();
     const files = new FileStorageService();
-    
+
+    // Get the Request and File
     const data = database.GetAll();
-    response.status(200).send(JSON.stringify(data));
+
+    // Return our JSON Response
+    const jsonReturn = [];
+    data.forEach(element => {
+        jsonReturn.push({
+            request: element,
+            file: files.getFile(element.fileId),
+        });
+    });
+
+    response.status(200).send(JSON.stringify(jsonReturn));
 };

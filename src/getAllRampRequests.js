@@ -14,7 +14,7 @@ module.exports.getAllRampRequests = (request, response) => {
         let take = pagination.take;
         dbData = database.getAllPaginated(skip, take);
     } else {
-        dbData = database.GetAll();
+        dbData = database.getAll();
     }
 
     // Return our JSON Response

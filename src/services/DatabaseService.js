@@ -5,21 +5,21 @@ class DatabaseService {
         this.dbData = [
             new RampRequest({
                 businessName: "My Business",
-                address: "123 Example Street"
+                address: "123 Example Street",
                 isBusinessOwner: false,
                 businessContact: "",
-                requestorEmail: "person@gmail.com"
+                requestorEmail: "person@gmail.com",
             }),
             new RampRequest({
                 businessName: "Cabannas",
-                address: "Cabana Way"
+                address: "Cabana Way",
                 isBusinessOwner: true,
                 businessContact: "example@business.com",
                 requestorEmail: "example@business.com"
             }),
             new RampRequest({
                 businessName: "Oni",
-                address: "343 Mombassa St"
+                address: "343 Mombassa St",
                 isBusinessOwner: true,
                 businessContact: "613-552-1234",
                 requestorEmail: "example@business.com"

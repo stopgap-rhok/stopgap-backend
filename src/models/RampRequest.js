@@ -8,5 +8,5 @@ class RampRequest {
     }
 }
 
-// module.exports.RampRequest = RampRequest;
-export class RampRequest;
+module.exports.RampRequest = {RampRequest};
+// export class RampRequest;

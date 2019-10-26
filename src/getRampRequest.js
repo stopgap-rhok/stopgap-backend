@@ -7,6 +7,7 @@ module.exports.getRampRequest = (request, response) => {
     const database = new DatabaseService();
     
     // Get the Parameters
+    /* rampRequestId: 0 */
     let rampRequestId = Utils.getQueryOrBodyParam(request, "rampRequestId");
 
     // Get the Request and File

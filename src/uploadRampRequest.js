@@ -9,6 +9,18 @@ exports.uploadRampRequest = (request, response) => {
   const files = new FileStorageService();
 
   // Get the Parameters
+  /* 
+  data : {
+    requestData: {
+        businessName: required(string),
+        businessAddress: required(string),
+        businessDetails: optional(string),
+        metRequirements: required([]string),
+        userEmail: optional(string),
+        userIsOwner: required(boolean),
+        attachments: required([]file)
+    }
+  } */
   let data = Utils.getBodyParam(request, "data");
   let requestData = data.requestData;
   let fileData = data.fileData;

@@ -9,6 +9,11 @@ module.exports.getAllRampRequests = (request, response) => {
     // Get the Parameters and Retrieve the Requests
     let dbData = [];
     if (Utils.hasQueryOrBodyParam(request, "pagination")) {
+        /*  
+        pagination: {
+            skip: 1,
+            take: 10,
+        }   */
         const pagination = Utils.getQueryOrBodyParam(request, "pagination");
         let skip = pagination.skip;
         let take = pagination.take;

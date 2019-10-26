@@ -24,7 +24,6 @@ module.exports.getAllRampRequests = (request, response) => {
     dbData.forEach(data => {
         jsonReturn.push({
             request: data,
-            file: files.getFile(data.fileId),
         });
     });
 

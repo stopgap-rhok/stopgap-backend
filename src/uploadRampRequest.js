@@ -14,8 +14,8 @@ exports.uploadRampRequest = (request, response) => {
   let fileData = data.fileData;
 
   // Upload the File and retrieve its ID. Assigning it to the field on our Request Data
-  let fileId = files.uploadFile(fileData);
-  requestData.fileId = fileId;
+  let fileUrl = files.uploadFile(fileData);
+  requestData.attachmentUrls.push(fileUrl);
 
   // Upload the Request Data
   database.upload(requestData);

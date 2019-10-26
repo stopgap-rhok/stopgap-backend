@@ -1,0 +1,55 @@
+resources:
+  - type: storage.v1.bucket
+    name: sls-node-simple-http-endpoint-dev-1572114823545
+  - type: cloudfunctions.v1beta2.function
+    name: node-simple-http-endpoint-dev-getAllRampRequests
+    properties:
+      location: us-east4
+      availableMemoryMb: 256
+      runtime: nodejs10
+      timeout: 60s
+      function: getAllRampRequests
+      sourceArchiveUrl: >-
+        gs://sls-node-simple-http-endpoint-dev-1572114823545/serverless/node-simple-http-endpoint/dev/1572117899288-2019-10-26T19:24:59.288Z/node-simple-http-endpoint.zip
+      labels: {}
+      httpsTrigger:
+        url: get
+  - type: cloudfunctions.v1beta2.function
+    name: node-simple-http-endpoint-dev-getRampRequest
+    properties:
+      location: us-east4
+      availableMemoryMb: 256
+      runtime: nodejs10
+      timeout: 60s
+      function: getRampRequest
+      sourceArchiveUrl: >-
+        gs://sls-node-simple-http-endpoint-dev-1572114823545/serverless/node-simple-http-endpoint/dev/1572117899288-2019-10-26T19:24:59.288Z/node-simple-http-endpoint.zip
+      labels: {}
+      httpsTrigger:
+        url: get
+  - type: cloudfunctions.v1beta2.function
+    name: node-simple-http-endpoint-dev-uploadRampRequest
+    properties:
+      location: us-east4
+      availableMemoryMb: 256
+      runtime: nodejs10
+      timeout: 60s
+      function: uploadRampRequest
+      sourceArchiveUrl: >-
+        gs://sls-node-simple-http-endpoint-dev-1572114823545/serverless/node-simple-http-endpoint/dev/1572117899288-2019-10-26T19:24:59.288Z/node-simple-http-endpoint.zip
+      labels: {}
+      httpsTrigger:
+        url: post
+  - type: cloudfunctions.v1beta2.function
+    name: node-simple-http-endpoint-dev-getFile
+    properties:
+      location: us-east4
+      availableMemoryMb: 256
+      runtime: nodejs10
+      timeout: 60s
+      function: getFile
+      sourceArchiveUrl: >-
+        gs://sls-node-simple-http-endpoint-dev-1572114823545/serverless/node-simple-http-endpoint/dev/1572117899288-2019-10-26T19:24:59.288Z/node-simple-http-endpoint.zip
+      labels: {}
+      httpsTrigger:
+        url: get

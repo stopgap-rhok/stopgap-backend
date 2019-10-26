@@ -5,7 +5,7 @@ provider:
   region: us-east4
   runtime: nodejs10
   project: rhok11-stopgap
-  credentials: ~/.gcloud/rhok11-stopgap-a3395605b3de.json # path must be absolute
+  credentials: ~\.gcloud\rhok11-stopgap-a3395605b3de.json # path must be absolute
 
 plugins:
   - serverless-google-cloudfunctions
@@ -20,16 +20,16 @@ functions:
   getAllRampRequests:
     handler: getAllRampRequests
     events:
-      - http: path
+      - http: get
   getRampRequest:
     handler: getRampRequest
     events:
-      - http: path
+      - http: get
   uploadRampRequest:
     handler: uploadRampRequest
     events:
-      - http: path
+      - http: post
   getFile:
     handler: getFile
     events:
-      - http: path
+      - http: get

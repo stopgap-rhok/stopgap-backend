@@ -3,7 +3,7 @@ const Utils = require("./utils/Utils");
 const RampRequest = require("./models/RampRequest");
 const DatabaseService = require("./services/DatabaseService");
 
-module.exports.getRampRequest = (request, response) => {
+module.exports.getRampRequest = async (request, response) => {
     const database = new DatabaseService();
     
     // Get the Parameters
@@ -11,7 +11,7 @@ module.exports.getRampRequest = (request, response) => {
     let rampRequestId = Utils.getQueryOrBodyParam(request, "rampRequestId");
 
     // Get the Request and File
-    const rampRequest = database.getByRequestId(rampRequestId);
+    const rampRequest = await database.getByRequestId(rampRequestId);
 
     // Return our JSON Response
     const jsonReturn = {

@@ -3,7 +3,7 @@
 const util = require('util');
 
 
-module.exports.dumpRequest = (request, response) => {
+module.exports.dumpRequest = async (request, response) => {
     console.log(request);
     console.log(response);
 

@@ -3,7 +3,7 @@ const Utils = require("./utils/Utils");
 const RampRequest = require("./models/RampRequest");
 const DatabaseService = require("./services/DatabaseService");
 
-module.exports.getAllRampRequests = (request, response) => {
+module.exports.getAllRampRequests = async (request, response) => {
     const database = new DatabaseService();
 
     // Get the Parameters and Retrieve the Requests
@@ -17,9 +17,9 @@ module.exports.getAllRampRequests = (request, response) => {
         const pagination = Utils.getQueryOrBodyParam(request, "pagination");
         let skip = pagination.skip;
         let take = pagination.take;
-        dbData = database.getAllPaginated(skip, take);
+        dbData = await database.getAllPaginated(skip, take);
     } else {
-        dbData = database.getAll();
+        dbData = await database.getAll();
     }
 
     // Return our JSON Response

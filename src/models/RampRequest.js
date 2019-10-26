@@ -29,4 +29,4 @@ class RampRequest {
     }
 }
 
-module.exports.RampRequest = RampRequest;
+module.exports = RampRequest;

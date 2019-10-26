@@ -2,11 +2,9 @@
 const Utils = require("./utils/Utils");
 const RampRequest = require("./models/RampRequest");
 const DatabaseService = require("./services/DatabaseService");
-const FileStorageService = require("./services/FileStorageService");
 
 module.exports.getAllRampRequests = (request, response) => {
     const database = new DatabaseService();
-    const files = new FileStorageService();
 
     // Get the Parameters and Retrieve the Requests
     let dbData = [];

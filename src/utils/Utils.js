@@ -51,4 +51,4 @@ class Utils {
     }
 }
 
-module.exports.Utils = Utils;
+module.exports = Utils;

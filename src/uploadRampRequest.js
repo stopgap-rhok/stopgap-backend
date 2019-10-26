@@ -50,6 +50,7 @@ app.use(uploadHandler.single('image'), function (req, res, next) {
     metRequirements: requestData.metRequirements,
     userEmail: requestData.userEmail,
     userIsOwner: requestData.userIsOwner,
+    attachments: [],
   });
 
   // Upload the File and retrieve its ID. Assigning it to the field on our Request Data

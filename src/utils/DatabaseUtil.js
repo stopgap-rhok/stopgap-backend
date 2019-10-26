@@ -35,4 +35,5 @@ class DatabaseUtil {
     }
 }
 
+// module.exports.DatabaseUtil = DatabaseUtil;
 export class DatabaseUtil;

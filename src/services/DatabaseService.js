@@ -1,5 +1,8 @@
 const RampRequest = require("../models/RampRequest");
 
+const {Firestore} = require('@google-cloud/firestore');
+const firestore = new Firestore();
+
 class DatabaseService {
     constructor() {
         this.dbData = [

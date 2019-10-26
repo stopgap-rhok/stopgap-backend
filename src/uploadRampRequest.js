@@ -55,7 +55,7 @@ app.use(uploadHandler.single('image'), function (req, res, next) {
   // Upload the File and retrieve its ID. Assigning it to the field on our Request Data
   requestData.attachments.forEach(fileData => {
     let fileUrl = files.uploadFile(fileData);
-    rampRequest.attachmentUrls.push(fileUrl);
+    rampRequest.attachments.push(fileUrl);
   });
 
   // Upload the Request Data

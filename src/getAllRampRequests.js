@@ -8,15 +8,23 @@ module.exports.http = (request, response) => {
     const database = new DatabaseService();
     const files = new FileStorageService();
 
-    // Get the Request and File
-    const data = database.GetAll();
+    // Get the Parameters and Retrieve the Requests
+    let dbData = [];
+    if (Utils.hasQueryOrBodyParam(request, "pagination")) {
+        const pagination = Utils.getQueryOrBodyParam(request, "pagination");
+        let skip = pagination.skip;
+        let take = pagination.take;
+        dbData = database.getAllPaginated(skip, take);
+    } else {
+        dbData = database.GetAll();
+    }
 
     // Return our JSON Response
     const jsonReturn = [];
-    data.forEach(element => {
+    dbData.forEach(data => {
         jsonReturn.push({
-            request: element,
-            file: files.getFile(element.fileId),
+            request: data,
+            file: files.getFile(data.fileId),
         });
     });
 

@@ -36,6 +36,10 @@ class DatabaseService {
     getAll() {
         return this.dbData;
     }
+    getAllPaginated(skip, take) {
+        return this.dbData.skip(skip).take(take);
+    }
+
     getByRequestId(id) {
         return this.dbData[id];
     }

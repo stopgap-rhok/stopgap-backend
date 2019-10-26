@@ -9,15 +9,15 @@ module.exports.http = (request, response) => {
     const files = new FileStorageService();
     
     // Get the Parameters
-    let requestId = Utils.getQueryOrBodyParam(request, "requestId");
+    let rampRequestId = Utils.getQueryOrBodyParam(request, "rampRequestId");
 
     // Get the Request and File
-    const data = database.getByRequestId(requestId);
-    const file = files.getFile(data.fileId);
+    const rampRequest = database.getByRequestId(rampRequestId);
+    const file = files.getFile(rampRequest.fileId);
 
     // Return our JSON Response
     const jsonReturn = {
-        request: data,
+        request: rampRequest,
         file: file,
     };
     response.status(200).send(JSON.stringify(jsonReturn));

@@ -19,7 +19,7 @@ app.use(cors());
 
 const getPublicUrl = (bucketName, fileName) => `https://storage.googleapis.com/${bucketName}/${fileName}`;
 
-app.use(uploadHandler.single('image'), function (req, res, next) {
+app.use(uploadHandler.single('image'), async function (req, res, next) {
   const body = req.body;
   res.set('Access-Control-Allow-Origin', '*');
   res.json({fileName: req.file.filename});
@@ -60,7 +60,7 @@ app.use(uploadHandler.single('image'), function (req, res, next) {
   });
 
   // Upload the Request Data
-  database.create(rampRequest);
+  await database.create(rampRequest);
 
   // Return our Response
   res.status(200).send('Uploaded Successfully');

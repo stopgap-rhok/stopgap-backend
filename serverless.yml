@@ -29,7 +29,7 @@ functions:
     handler: uploadRampRequest
     events:
       - http: post
-  getFile:
-    handler: getFile
+  dumpRequest:
+    handler: dumpRequest
     events:
       - http: get

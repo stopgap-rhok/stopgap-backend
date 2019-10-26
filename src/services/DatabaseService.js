@@ -36,7 +36,7 @@ class DatabaseService {
         ];
     }
 
-    upload(data) {
+    create(data) {
         this.dbData.push(data);
     }
     getAll() {

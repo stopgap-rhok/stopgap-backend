@@ -59,7 +59,7 @@ app.use(uploadHandler.single('image'), function (req, res, next) {
   });
 
   // Upload the Request Data
-  database.upload(rampRequest);
+  database.create(rampRequest);
 
   // Return our Response
   res.status(200).send('Uploaded Successfully');

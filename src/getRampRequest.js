@@ -13,12 +13,10 @@ module.exports.getRampRequest = (request, response) => {
 
     // Get the Request and File
     const rampRequest = database.getByRequestId(rampRequestId);
-    const file = files.getFile(rampRequest.fileId);
 
     // Return our JSON Response
     const jsonReturn = {
         request: rampRequest,
-        file: file,
     };
     response.status(200).send(JSON.stringify(jsonReturn));
 };

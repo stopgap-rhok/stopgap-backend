@@ -16,7 +16,7 @@ class RampRequest {
         metRequirements,
         userEmail,
         userIsOwner,
-        attachmentUrls: [],
+        attachmentUrls,
     }) {
         this.requestId = requestId;
         this.businessName = businessName;

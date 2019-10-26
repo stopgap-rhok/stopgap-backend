@@ -4,7 +4,7 @@ const RampRequest = require("./models/RampRequest");
 const DatabaseService = require("./services/DatabaseService");
 const FileStorageService = require("./services/FileStorageService");
 
-exports.http = (request, response) => {
+exports.uploadRampRequest = (request, response) => {
   const database = new DatabaseService();
   const files = new FileStorageService();
 

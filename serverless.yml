@@ -17,7 +17,19 @@ package:
     - .git/**
 
 functions:
-  helloWorld:
-    handler: http
+  getAllRampRequests:
+    handler: getAllRampRequests
+    events:
+      - http: path
+  getRampRequest:
+    handler: getRampRequest
+    events:
+      - http: path
+  uploadRampRequest:
+    handler: uploadRampRequest
+    events:
+      - http: path
+  getFile:
+    handler: getFile
     events:
       - http: path

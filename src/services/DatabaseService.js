@@ -22,7 +22,7 @@ class DatabaseService {
         return id;
     }
     async getAll() {
-        const document = adminDb.firestore().collection('reports');
+        const document = admin.firestore().collection('reports');
         let allDoc = await document.get()
         .then(snapshot=>{
             const results = [];

@@ -1,10 +1,11 @@
 const RampRequest = require("../models/RampRequest");
 
 const {Firestore} = require('@google-cloud/firestore');
-const firestore = new Firestore();
 
 class DatabaseService {
     constructor() {
+        this.firestore = new Firestore();
+
         this.dbData = [
             new RampRequest({
                 requestId: 0,
@@ -40,16 +41,20 @@ class DatabaseService {
     }
 
     create(data) {
+        const document = this.firestore.doc('posts/intro-to-firestore');
         this.dbData.push(data);
     }
     getAll() {
+        const document = this.firestore.doc('posts/intro-to-firestore');
         return this.dbData;
     }
     getAllPaginated(skip, take) {
+        const document = this.firestore.doc('posts/intro-to-firestore');
         return this.dbData.skip(skip).take(take);
     }
 
     getByRequestId(id) {
+        const document = this.firestore.doc('posts/intro-to-firestore');
         return this.dbData[id];
     }
 }

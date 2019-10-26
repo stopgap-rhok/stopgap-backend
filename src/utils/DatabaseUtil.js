@@ -1,3 +1,5 @@
+const RampRequest = require("..//models/RampRequest");
+
 class DatabaseUtil {
     dbData = [];
 

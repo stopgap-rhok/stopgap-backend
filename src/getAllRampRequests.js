@@ -1,5 +1,6 @@
 'use strict';
 const DatabaseUtil = require("./utils/DatabaseUtil");
+const RampRequest = require("./models/RampRequest");
 
 exports.http = (request, response) => {
     const database = new DatabaseUtil();

@@ -9,15 +9,13 @@ module.exports.http = (request, response) => {
     const files = new FileStorageService();
     
     // Get the Parameters
-    let requestId = Utils.getQueryOrBodyParam(request, "requestId");
+    let fileId = Utils.getQueryOrBodyParam(request, "fileId");
 
     // Get the Request and File
-    const data = database.getByRequestId(requestId);
-    const file = files.getFile(data.fileId);
+    const file = files.getFile(fileId);
 
     // Return our JSON Response
     const jsonReturn = {
-        request: data,
         file: file,
     };
     response.status(200).send(JSON.stringify(jsonReturn));

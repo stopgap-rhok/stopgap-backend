@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/stopgap-rhok/stopgap-backend#readme",
   "dependencies": {
+    "@google-cloud/functions-framework": "^1.3.2",
     "serverless-google-cloudfunctions": "^2.3.3"
   }
 }

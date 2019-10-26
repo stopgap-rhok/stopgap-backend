@@ -11,7 +11,7 @@ class DatabaseService {
                 metRequirements: false,
                 userEmail: "user@example.com",
                 userIsOwner: false,
-                attachmentUrls: [],
+                attachmentUrls: ["http://www.example.com/image1.jpg"],
             }),
             new RampRequest({
                 requestId: 1,
@@ -21,7 +21,7 @@ class DatabaseService {
                 metRequirements: false,
                 userEmail: "example@business.com",
                 userIsOwner: true,
-                attachmentUrls: [],
+                attachmentUrls: ["http://www.example.com/image2.jpg"],
             }),
             new RampRequest({
                 requestId: 2,
@@ -31,7 +31,7 @@ class DatabaseService {
                 metRequirements: false,
                 userEmail: "613-552-1234",
                 userIsOwner: true,
-                attachmentUrls: [],
+                attachmentUrls: ["http://www.example.com/image3.jpg"],
             })
         ];
     }

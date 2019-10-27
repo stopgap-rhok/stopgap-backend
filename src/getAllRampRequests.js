@@ -2,14 +2,20 @@
 const Utils = require("./utils/Utils");
 const RampRequest = require("./models/RampRequest");
 const DatabaseService = require("./services/DatabaseService");
+const cors = require('cors');
 
-module.exports.getAllRampRequests = async (request, response) => {
+const express = require("express");
+const app = express();
+
+app.use(cors());
+
+app.use(async (request, response) => {
     const database = new DatabaseService();
 
     // Get the Parameters and Retrieve the Requests
     let dbData = [];
     if (Utils.hasQueryOrBodyParam(request, "pagination")) {
-        /*  
+        /*
         pagination: {
             skip: 1,
             take: 10,
@@ -31,4 +37,6 @@ module.exports.getAllRampRequests = async (request, response) => {
     });
 
     response.status(200).send(JSON.stringify(jsonReturn));
-};
+});
+
+module.exports.getAllRampRequests = app;

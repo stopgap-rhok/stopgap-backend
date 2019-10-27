@@ -2,10 +2,16 @@
 const Utils = require("./utils/Utils");
 const RampRequest = require("./models/RampRequest");
 const DatabaseService = require("./services/DatabaseService");
+const cors = require('cors');
 
-module.exports.getRampRequest = async (request, response) => {
+const express = require("express");
+const app = express();
+
+app.use(cors());
+
+app.use(async (request, response) => {
     const database = new DatabaseService();
-    
+
     // Get the Parameters
     /* rampRequestId: "" */
     let rampRequestId = Utils.getQueryOrBodyParam(request, "rampRequestId");
@@ -18,4 +24,6 @@ module.exports.getRampRequest = async (request, response) => {
         request: rampRequest,
     };
     response.status(200).send(JSON.stringify(jsonReturn));
-};
+});
+
+module.exports.getRampRequest = app;

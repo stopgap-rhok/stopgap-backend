@@ -1,6 +1,8 @@
 'use strict';
 const cors = require('cors');
 
+const DatabaseService = require("./services/DatabaseService");
+
 const express = require("express");
 
 // Node.js doesn't have a built-in multipart/form-data parsing library.

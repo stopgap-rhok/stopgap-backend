@@ -82,6 +82,9 @@ app.use(async function (req, res) {
   // Ensure that the fields are uniform
   if (fields.businessDetails == undefined) { fields.businessDetails = ""; }
   if (fields.userEmail == undefined) { fields.userEmail = ""; }
+  if (fields.canContact == undefined) { 
+    if (fields.userIsOwner) { fields.canContact = true; }
+  }
 
   // Convert Fields to Model
   const rampRequest = {

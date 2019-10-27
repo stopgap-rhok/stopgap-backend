@@ -92,6 +92,10 @@ app.use(async function (req, res) {
 
   busboy.end(req.rawBody);
 
+  // Ensure that the fields are uniform
+  if (fields.businessDetails == undefined) { fields.businessDetails = ""; }
+  if (fields.userEmail == undefined) { fields.userEmail = ""; }
+  
   // Convert Fields to Model
   const rampRequest = new RampRequest({
     businessName: fields.businessName,

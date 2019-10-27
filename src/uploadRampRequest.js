@@ -100,12 +100,6 @@ app.use(async function (req, res) {
     attachments: attachments,
   });
 
-  // Upload the File and retrieve its ID. Assigning it to the field on our Request Data
-  // requestData.attachments.forEach(fileData => {
-  //   let fileUrl = files.uploadFile(fileData);
-  //   rampRequest.attachments.push(fileUrl);
-  // });
-
   // Upload the Request Data
   const rampRequestId = await database.create(rampRequest);
 

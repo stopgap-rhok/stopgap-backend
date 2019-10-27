@@ -1,3 +1,4 @@
+/* TODO: Move file upload code to abstracted class */
 class FileStorageService {
     constructor() { }
 

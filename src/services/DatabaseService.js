@@ -60,6 +60,9 @@ class DatabaseService {
     }
 
     async update(data) {
+        const id = data.requestId;
+        const updateDocument = this.firestore.doc(this.requestCollectionName + '/' + id);
+        await updateDocument.update(data);
         return true;
     }
 

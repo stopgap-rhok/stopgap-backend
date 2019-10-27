@@ -1,4 +1,3 @@
-const RampRequest = require("../models/RampRequest");
 const {
     Firestore
 } = require('@google-cloud/firestore');
@@ -41,7 +40,7 @@ class DatabaseService {
             .orderBy('requestId')
             .offset(skip)
             .limit(take)
-        
+
         let allDoc = await reportsCollection.get()
             .then(snapshot => {
                 const results = [];

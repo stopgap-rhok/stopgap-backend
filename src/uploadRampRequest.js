@@ -1,14 +1,7 @@
 'use strict';
-const Utils = require("./utils/Utils");
 const cors = require('cors');
-const RampRequest = require("./models/RampRequest");
-const DatabaseService = require("./services/DatabaseService");
-const FileStorageService = require("./services/FileStorageService");
 
 const express = require("express");
-const path = require('path');
-const os = require('os');
-const fs = require('fs');
 
 // Node.js doesn't have a built-in multipart/form-data parsing library.
 // Instead, we can use the 'busboy' library from NPM to parse these requests.
@@ -88,17 +81,21 @@ app.use(async function (req, res) {
   // Ensure that the fields are uniform
   if (fields.businessDetails == undefined) { fields.businessDetails = ""; }
   if (fields.userEmail == undefined) { fields.userEmail = ""; }
-  
+
   // Convert Fields to Model
-  const rampRequest = new RampRequest({
+  const rampRequest = {
     businessName: fields.businessName,
     businessAddress: fields.businessAddress,
-    businessDetails: fields.businessDetails,
-    metRequirements: fields.metRequirements,
+    singleStep: fields.singleStep,
+    nonResidential: fields.nonResidential,
+    canContact: fields.canContact,
+    sidewalkFlat: fields.sidewalkFlat,
+    stepIsWide: fields.stepIsWide,
+    correctHeight: fields.correctHeight,
     userEmail: fields.userEmail,
     userIsOwner: fields.userIsOwner,
     attachments: attachments.map(getPublicUrlFromFilename),
-  });
+  };
 
   // Upload the Request Data
   const database = new DatabaseService();

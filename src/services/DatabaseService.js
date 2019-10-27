@@ -55,7 +55,7 @@ class DatabaseService {
     async getByRequestId(id) {
         const document = this.firestore.doc('reports/' + id);
         let doc = await document.get();
-        return doc;
+        return doc.data();
     }
 }
 

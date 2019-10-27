@@ -67,7 +67,7 @@ class DatabaseService {
     }
 
     async deleteByRequestId(id) {
-        const deleteDocument = admin.firestore().collection(this.requestCollectionName).doc(id);
+        const deleteDocument = db.collection(this.requestCollectionName).doc(id);
         let deleteDoc = deleteDocument.delete();
         return true;
     }

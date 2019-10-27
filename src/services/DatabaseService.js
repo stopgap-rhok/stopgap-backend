@@ -12,19 +12,19 @@ admin.initializeApp({
 class DatabaseService {
     constructor() {
         this.firestore = new Firestore();
-
+        this.requestCollectionName = "reports";
     }
 
     async create(data) {
         const id = uuidv4();
         data.requestId = id;
 
-        const document = this.firestore.doc('reports/' + data.requestId);
+        const document = this.firestore.doc(this.requestCollectionName + '/' + data.requestId);
         await document.set(data);
         return id;
     }
     async getAll() {
-        const reportsCollection = admin.firestore().collection('reports');
+        const reportsCollection = admin.firestore().collection(this.requestCollectionName);
         let allDoc = await reportsCollection.get()
             .then(snapshot => {
                 const results = [];
@@ -37,7 +37,7 @@ class DatabaseService {
     }
 
     async getAllPaginated(skip, take) {
-        let reportsCollection = admin.firestore().collection('reports')
+        let reportsCollection = admin.firestore().collection(this.requestCollectionName)
             .orderBy('requestId')
             .offset(skip)
             .limit(take)
@@ -54,7 +54,7 @@ class DatabaseService {
     }
 
     async getByRequestId(id) {
-        const document = this.firestore.doc('reports/' + id);
+        const document = this.firestore.doc(this.requestCollectionName + '/' + id);
         let doc = await document.get();
         return doc.data();
     }

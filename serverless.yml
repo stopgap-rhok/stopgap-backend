@@ -29,6 +29,8 @@ functions:
     handler: uploadRampRequest
     events:
       - http: post
+    environment:
+      GCS_BUCKET: "stopgap-images"
   dumpRequest:
     handler: dumpRequest
     events:

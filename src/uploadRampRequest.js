@@ -77,17 +77,10 @@ app.use(async function (req, res) {
     attachments.push(fileName)
   });
 
-  // Triggered once all uploaded files are processed by Busboy.
-  // We still need to wait for the disk writes (saves) to complete.
-  busboy.on('finish', () => {
-    Promise.all(fileWrites).then(() => {
-
-      const body = req.body;
-      res.set('Access-Control-Allow-Origin', '*');
-      res.json({fileNames: attachments});
-      res.end();
-      res.send();
-    });
+  await new Promise((resolve) => {
+    // Triggered once all uploaded files are processed by Busboy.
+    // We still need to wait for the disk writes (saves) to complete.
+    busboy.on('finish', () => {resolve(Promise.all(fileWrites))});
   });
 
   busboy.end(req.rawBody);
@@ -120,7 +113,9 @@ app.use(async function (req, res) {
   const jsonReturn = {
     requestId: rampRequestId,
   };
-  response.status(200).send(JSON.stringify(jsonReturn));
+
+  res.set('Access-Control-Allow-Origin', '*');
+  res.status(200).send(JSON.stringify(jsonReturn));
 });
 
 exports.uploadRampRequest = app;

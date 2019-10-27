@@ -24,8 +24,8 @@ class DatabaseService {
         return id;
     }
     async getAll() {
-        const document = admin.firestore().collection('reports');
-        let allDoc = await document.get()
+        const reportsCollection = admin.firestore().collection('reports');
+        let allDoc = await reportsCollection.get()
             .then(snapshot => {
                 const results = [];
                 snapshot.forEach(doc => {
@@ -37,11 +37,14 @@ class DatabaseService {
     }
 
     async getAllPaginated(skip, take) {
-        const document = admin.firestore().collection('reports');
-        let allDoc = await document.get()
+        const reportsCollection = admin.firestore().collection('reports')
+            .startAt(skip)
+            .limit(take);
+            
+        let allDoc = await reportsCollection.get()
             .then(snapshot => {
                 const results = [];
-                snapshot.skip(skip).take(take).forEach(doc => {
+                snapshot.forEach(doc => {
                     results.push(doc.data());
                 });
                 return results;

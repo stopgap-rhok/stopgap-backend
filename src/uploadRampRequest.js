@@ -84,6 +84,7 @@ app.use(async function (req, res) {
   if (fields.userEmail == undefined) { fields.userEmail = ""; }
   if (fields.canContact == undefined) { 
     if (fields.userIsOwner) { fields.canContact = true; }
+    else { fields.canContact = false; }
   }
 
   // Convert Fields to Model

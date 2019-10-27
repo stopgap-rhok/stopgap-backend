@@ -2,6 +2,7 @@
 const Utils = require("./utils/Utils");
 const RampRequest = require("./models/RampRequest");
 const DatabaseService = require("./services/DatabaseService");
+const cors = require('cors');
 
 const express = require("express");
 const app = express();

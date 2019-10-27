@@ -92,41 +92,22 @@ app.use(async function (req, res) {
 
   busboy.end(req.rawBody);
 
-
-  return;
-
-  // Get the Parameters
-  /*
-  data : {
-    requestData: {
-        businessName: required(string),
-        businessAddress: required(string),
-        businessDetails: optional(string),
-        metRequirements: required([]string),
-        userEmail: optional(string),
-        userIsOwner: required(boolean),
-        attachments: required([]file)
-    }
-  } */
-  let data = Utils.getBodyParam(req, "data");
-  let requestData = data.requestData;
-
-  // Convert to Model
+  // Convert Fields to Model
   const rampRequest = new RampRequest({
-    businessName: requestData.businessName,
-    businessAddress: requestData.businessAddress,
-    businessDetails: requestData.businessDetails,
-    metRequirements: requestData.metRequirements,
-    userEmail: requestData.userEmail,
-    userIsOwner: requestData.userIsOwner,
-    attachments: [],
+    businessName: fields.businessName,
+    businessAddress: fields.businessAddress,
+    businessDetails: fields.businessDetails,
+    metRequirements: fields.metRequirements,
+    userEmail: fields.userEmail,
+    userIsOwner: fields.userIsOwner,
+    attachments: attachments,
   });
 
   // Upload the File and retrieve its ID. Assigning it to the field on our Request Data
-  requestData.attachments.forEach(fileData => {
-    let fileUrl = files.uploadFile(fileData);
-    rampRequest.attachments.push(fileUrl);
-  });
+  // requestData.attachments.forEach(fileData => {
+  //   let fileUrl = files.uploadFile(fileData);
+  //   rampRequest.attachments.push(fileUrl);
+  // });
 
   // Upload the Request Data
   const rampRequestId = await database.create(rampRequest);

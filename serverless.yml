@@ -25,6 +25,10 @@ functions:
     handler: getRampRequest
     events:
       - http: get
+  deleteRampRequest:
+    handler: deleteRampRequest
+    events:
+      - http: delete
   uploadRampRequest:
     handler: uploadRampRequest
     events:

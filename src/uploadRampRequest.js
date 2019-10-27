@@ -24,8 +24,8 @@ const storage = new Storage();
 const uuid = require("uuid");
 
 app.use(cors());
-
 const getPublicUrl = (bucketName, fileName) => `https://storage.googleapis.com/${bucketName}/${fileName}`;
+const getPublicUrlFromFilename = getPublicUrl.bind(null, process.env.GCS_BUCKET);
 
 app.use(async function (req, res) {
   if (req.method !== 'POST') {
@@ -97,7 +97,7 @@ app.use(async function (req, res) {
     metRequirements: fields.metRequirements,
     userEmail: fields.userEmail,
     userIsOwner: fields.userIsOwner,
-    attachments: attachments,
+    attachments: attachments.map(getPublicUrlFromFilename),
   });
 
   // Upload the Request Data

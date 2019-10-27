@@ -22,9 +22,11 @@ app.use(async (request, response) => {
 
     // Retrieve and Delete the Files
     const rampRequest = await database.getByRequestId(rampRequestId);
-    rampRequest.attachments.forEach(file => {
-        // Delete the files
-    });
+    if (rampRequest.attachments) {
+        rampRequest.attachments.forEach(file => {
+            // Delete the files
+        });
+    }
 
     // Get the Request and File
     const deleteRequest = await database.deleteByRequestId(rampRequestId);

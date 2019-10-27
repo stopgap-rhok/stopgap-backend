@@ -101,6 +101,7 @@ app.use(async function (req, res) {
   });
 
   // Upload the Request Data
+  const database = new DatabaseService();
   const rampRequestId = await database.create(rampRequest);
 
   // Return our Response

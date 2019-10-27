@@ -25,16 +25,20 @@ functions:
     handler: getRampRequest
     events:
       - http: get
-  deleteRampRequest:
-    handler: deleteRampRequest
-    events:
-      - http: delete
   uploadRampRequest:
     handler: uploadRampRequest
     events:
       - http: post
     environment:
       GCS_BUCKET: "stopgap-images"
+  updateRampRequest:
+    handler: updateRampRequest
+    events:
+      - http: post
+  deleteRampRequest:
+    handler: deleteRampRequest
+    events:
+      - http: delete
   dumpRequest:
     handler: dumpRequest
     events:

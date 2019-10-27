@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 app.use(async (request, response) => {
-    if (request.method !== 'DELETE' || request.method !== 'POST') {
+    if (request.method !== 'DELETE' && request.method !== 'POST') {
         // Return a "method not allowed" error
         return res.status(405).end();
     }

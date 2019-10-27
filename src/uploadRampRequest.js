@@ -90,13 +90,20 @@ app.use(async function (req, res) {
     singleStep: fields.singleStep,
     nonResidential: fields.nonResidential,
     canContact: fields.canContact,
-    sidewalkFlat: fields.sidewalkFlat,
     stepIsWide: fields.stepIsWide,
-    correctHeight: fields.correctHeight,
-    userEmail: fields.userEmail,
     userIsOwner: fields.userIsOwner,
     attachments: attachments.map(getPublicUrlFromFilename),
   };
+
+  if (fields.hasOwnProperty("sidewalkFlat")) {
+    rampRequest.sidewalkFlat = fields.sidewalkFlat;
+  }
+  if (fields.hasOwnProperty("correctHeight")) {
+    rampRequest.correctHeight = fields.correctHeight;
+  }
+  if (fields.hasOwnProperty("userEmail")) {
+    rampRequest.userEmail = fields.userEmail;
+  }
 
   // Upload the Request Data
   const database = new DatabaseService();

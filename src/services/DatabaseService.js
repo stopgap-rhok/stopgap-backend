@@ -45,7 +45,7 @@ class DatabaseService {
         let allDoc = await reportsCollection.get()
             .then(snapshot => {
                 const results = [];
-                snapshot.take(take).forEach(doc => {
+                snapshot.forEach(doc => {
                     results.push(doc.data());
                 });
                 return results;

@@ -37,10 +37,16 @@ class DatabaseService {
     }
 
     async getAllPaginated(skip, take) {
-        const reportsCollection = admin.firestore().collection('reports')
-            .startAt(skip);
-            
+        let reportsCollection = admin.firestore().collection('reports')
+            .startAt(skip);            
+        
         let allDoc = await reportsCollection.get()
+            .then(snapshot => {
+                let startAtSnapshot = admin.firestore().collection('reports')
+                    .startAt(snapshot);    
+
+                return startAtSnapshot.limit(10).get();
+            })
             .then(snapshot => {
                 const results = [];
                 snapshot.take(take).forEach(doc => {

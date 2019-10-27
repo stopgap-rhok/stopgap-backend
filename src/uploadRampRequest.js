@@ -74,9 +74,8 @@ app.use(async function (req, res) {
     // Triggered once all uploaded files are processed by Busboy.
     // We still need to wait for the disk writes (saves) to complete.
     busboy.on('finish', () => {resolve(Promise.all(fileWrites))});
+    busboy.end(req.rawBody);
   });
-
-  busboy.end(req.rawBody);
 
   // Ensure that the fields are uniform
   if (fields.businessDetails == undefined) { fields.businessDetails = ""; }

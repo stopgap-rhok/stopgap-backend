@@ -16,9 +16,11 @@ app.use(async (request, response) => {
     let dbData = [];
     if (Utils.hasQueryOrBodyParam(request, "pagination")) {
         /*
-        pagination: {
-            skip: 1,
-            take: 10,
+        {
+            "pagination": {
+                "skip": 1,
+                "take": 10,
+            }
         }   */
         const pagination = Utils.getQueryOrBodyParam(request, "pagination");
         let skip = pagination.skip;

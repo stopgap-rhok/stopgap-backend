@@ -13,7 +13,7 @@ app.use(async (request, response) => {
     const database = new DatabaseService();
 
     // Get the Parameters
-    /* rampRequestId: "" */
+    /* { "rampRequestId": "" } */
     let rampRequestId = Utils.getQueryOrBodyParam(request, "rampRequestId");
 
     // Get the Request and File

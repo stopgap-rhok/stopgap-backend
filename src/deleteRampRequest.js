@@ -20,12 +20,18 @@ app.use(async (request, response) => {
     /* { "rampRequestId": "" } */
     let rampRequestId = Utils.getQueryOrBodyParam(request, "rampRequestId");
 
+    // Retrieve and Delete the Files
+    const rampRequest = await database.getByRequestId(rampRequestId);
+    rampRequest.attachments.forEach(file => {
+        // Delete the files
+    });
+
     // Get the Request and File
-    const rampRequest = await database.deleteByRequestId(rampRequestId);
+    const deleteRequest = await database.deleteByRequestId(rampRequestId);
 
     // Return our JSON Response
     const jsonReturn = {
-        request: rampRequest,
+        request: deleteRequest,
     };
     response.status(200).send(JSON.stringify(jsonReturn));
 });
